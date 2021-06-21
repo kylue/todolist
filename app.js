@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-kylue:<password>@cluster0.xjv4h.mongodb.net/training2nd", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-kylue:Test123@cluster0.xjv4h.mongodb.net/todolist-training", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemsSchema = {
   name: String

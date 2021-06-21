@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const _ = require("lodash");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-kylue:Test123@cluster0.xjv4h.mongodb.net/trainingOnly", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-kylue:<password>@cluster0.xjv4h.mongodb.net/training2nd", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemsSchema = {
   name: String
@@ -61,7 +61,7 @@ app.get("/", function(req, res) {
 
 app.get("/:customListName", function(req, res) {
 
-  const customListName = req.params.customListName;
+  const customListName = _.capitalize(req.params.customListName);
 
   const list = new List({
     name: customListName,

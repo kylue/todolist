@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-kylue:Test123@cluster0.xjv4h.mongodb.net/training_only", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-kylue:Test123@cluster0.xjv4h.mongodb.net/trainingOnly", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemsSchema = {
   name: String
@@ -41,6 +41,7 @@ const List = mongoose.model("List", listSchema);
 app.get("/", function(req, res) {
 
   Item.find({}, function(err, foundItems) {
+
     if(foundItems.length === 0) {
       Item.insertMany(defaultItems, function(err) {
         if(err) {
